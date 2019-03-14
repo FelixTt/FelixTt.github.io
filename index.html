@@ -187,7 +187,7 @@
 <p>###第二步<br>在适当的位置创建一个 blog 的文件夹<br>接下来的操作，是在这个文件夹下完成的<br>sudo hexo blog      初始化博客，在初始化下，会生成一个默认的主题</p>
 <p>hexo s 命令预览博客内容<br>hexo d 同步到GitHub远端</p>
 <p>###第三步 部署到github上<br>创建一个仓库，名字要和自己的GitHub名字相同，如FelixTt.github.io</p>
-<p>在cnpm下装一个插件<br>    cnpm install –save hexo-deployer-git</p>
+<p>在cnpm下装一个插件<br>    cnpm install hexo-deployer-git –save </p>
 <p>设置_config.yml文件，可以在vim下设置<br>vim _config.yml<br>    找到#Depolyment,在后面添加<br>    type: git<br>    repo: 仓库地址（如:<a href="https://github.com/FelixTt/FelixTt.github.io.git）" target="_blank" rel="noopener">https://github.com/FelixTt/FelixTt.github.io.git）</a><br>    branch: master<br>保存退出。注意，每一个：后面均有一个空格<br>部署到github上<br>    hexo d</p>
 <hr>
 <p>#更换主题<br>先拷贝一个自己喜欢的主题 git clone <a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="noopener">https://github.com/litten/hexo-theme-yilia</a> .git themes/yilia<br>更改_config.yml文件，将主题修改为yilia即可<br>最后，部署到github上<br>hexo clean<br>hexo g<br>hexo d</p>
