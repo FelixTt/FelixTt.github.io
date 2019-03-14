@@ -191,7 +191,6 @@
 <p>设置_config.yml文件，可以在vim下设置<br>vim _config.yml<br>    找到#Depolyment,在后面添加<br>    type: git<br>    repo: 仓库地址（如:<a href="https://github.com/FelixTt/FelixTt.github.io.git）" target="_blank" rel="noopener">https://github.com/FelixTt/FelixTt.github.io.git）</a><br>    branch: master<br>保存退出。注意，每一个：后面均有一个空格<br>部署到github上<br>    hexo d</p>
 <hr>
 <p>#更换主题<br>先拷贝一个自己喜欢的主题 git clone <a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="noopener">https://github.com/litten/hexo-theme-yilia</a> .git themes/yilia<br>更改_config.yml文件，将主题修改为yilia即可<br>最后，部署到github上<br>hexo clean<br>hexo g<br>hexo d</p>
-<p>谢谢！</p>
 
       
 
@@ -200,6 +199,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">经验</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -255,6 +265,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <pre><code>这个是我的第一篇文章，来记录我的博客生成日期。
+1111
+1111
 </code></pre>
       
 
@@ -263,6 +275,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">记录</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -459,6 +482,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">经验</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">记录</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
