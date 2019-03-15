@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>在Mac下搭建一个自己的hexo博客 | 邰涛的微博</title>
+  <title>Mac 下查看和杀掉进程 | 邰涛的微博</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#在Mac下搭建一个自己的hexo博客  ##准备在命令行下  sudo su hexo是需要node.js支持  安装好git通过homebrew安装brew install git  安装node.js直接去官网nodejs.org找到安装包，安装即可node -v 查看是否安装好npm -v  查看是否安装好   ##开始安装hexo ###第一步：    可以借助npm包管理工具来安装he">
-<meta name="keywords" content="经验">
+  <meta name="description" content="查看进程占用  lsof -i tcp:8080   该命令会显示占用8080端口的进程，有其 pid ,可以通过pid关掉该进程 杀死进程   kill pid 1331">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在Mac下搭建一个自己的hexo博客">
-<meta property="og:url" content="http://yoursite.com/2019/03/14/在Mac下搭建一个自己的hexo博客/index.html">
+<meta property="og:title" content="Mac 下查看和杀掉进程">
+<meta property="og:url" content="http://yoursite.com/2019/03/15/Mac-下查看和杀掉进程/index.html">
 <meta property="og:site_name" content="邰涛的微博">
-<meta property="og:description" content="#在Mac下搭建一个自己的hexo博客  ##准备在命令行下  sudo su hexo是需要node.js支持  安装好git通过homebrew安装brew install git  安装node.js直接去官网nodejs.org找到安装包，安装即可node -v 查看是否安装好npm -v  查看是否安装好   ##开始安装hexo ###第一步：    可以借助npm包管理工具来安装he">
+<meta property="og:description" content="查看进程占用  lsof -i tcp:8080   该命令会显示占用8080端口的进程，有其 pid ,可以通过pid关掉该进程 杀死进程   kill pid 1331">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-14T14:30:29.347Z">
+<meta property="og:updated_time" content="2019-03-15T09:35:44.888Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="在Mac下搭建一个自己的hexo博客">
-<meta name="twitter:description" content="#在Mac下搭建一个自己的hexo博客  ##准备在命令行下  sudo su hexo是需要node.js支持  安装好git通过homebrew安装brew install git  安装node.js直接去官网nodejs.org找到安装包，安装即可node -v 查看是否安装好npm -v  查看是否安装好   ##开始安装hexo ###第一步：    可以借助npm包管理工具来安装he">
+<meta name="twitter:title" content="Mac 下查看和杀掉进程">
+<meta name="twitter:description" content="查看进程占用  lsof -i tcp:8080   该命令会显示占用8080端口的进程，有其 pid ,可以通过pid关掉该进程 杀死进程   kill pid 1331">
   
     <link rel="alternative" href="/atom.xml" title="邰涛的微博" type="application/atom+xml">
   
@@ -159,45 +158,35 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-在Mac下搭建一个自己的hexo博客" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Mac-下查看和杀掉进程" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      在Mac下搭建一个自己的hexo博客
+      Mac 下查看和杀掉进程
     </h1>
   
 
         
-        <a href="/2019/03/14/在Mac下搭建一个自己的hexo博客/" class="archive-article-date">
-  	<time datetime="2019-03-14T08:14:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-14</time>
+        <a href="/2019/03/15/Mac-下查看和杀掉进程/" class="archive-article-date">
+  	<time datetime="2019-03-15T09:27:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-15</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#在Mac下搭建一个自己的hexo博客</p>
-<hr>
-<p>##准备<br>在命令行下  sudo su</p>
-<p>hexo是需要node.js支持</p>
-<ol>
-<li>安装好git<br>通过homebrew安装<pre><code>brew install git
-</code></pre></li>
-<li>安装node.js<br>直接去官网nodejs.org找到安装包，安装即可<br>node -v 查看是否安装好<br>npm -v  查看是否安装好</li>
-</ol>
-<hr>
-<p>##开始安装hexo</p>
-<p>###第一步：<br>    可以借助npm包管理工具来安装hexo，但是速度较慢，所以我们可以先安装cnpm<br>    npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a><br>    cnpm -v 检查是否安装好cnpm<br>接下来正式安装hexo<br>    cnpm install -g hexo-cli<br>    hexo -v 检查是否安装好hexo</p>
-<p>###第二步<br>在适当的位置创建一个 blog 的文件夹<br>接下来的操作，是在这个文件夹下完成的<br>sudo hexo blog      初始化博客，在初始化下，会生成一个默认的主题</p>
-<p>hexo s 命令预览博客内容<br>hexo d 同步到GitHub远端</p>
-<p>###第三步 部署到github上<br>创建一个仓库，名字要和自己的GitHub名字相同，如FelixTt.github.io</p>
-<p>在cnpm下装一个插件<br>    cnpm install hexo-deployer-git –save </p>
-<p>设置_config.yml文件，可以在vim下设置<br>vim _config.yml<br>    找到#Depolyment,在后面添加<br>    type: git<br>    repo: 仓库地址（如:<a href="https://github.com/FelixTt/FelixTt.github.io.git）" target="_blank" rel="noopener">https://github.com/FelixTt/FelixTt.github.io.git）</a><br>    branch: master<br>保存退出。注意，每一个：后面均有一个空格<br>部署到github上<br>    hexo d</p>
-<hr>
-<p>#更换主题<br>先拷贝一个自己喜欢的主题 git clone <a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="noopener">https://github.com/litten/hexo-theme-yilia</a> .git themes/yilia<br>更改_config.yml文件，将主题修改为yilia即可<br>最后，部署到github上<br>hexo clean<br>hexo g<br>hexo d</p>
+        <p>查看进程占用</p>
+<blockquote>
+<p>lsof -i tcp:8080 </p>
+</blockquote>
+<p>该命令会显示占用8080端口的进程，有其 pid ,可以通过pid关掉该进程</p>
+<p>杀死进程 </p>
+<blockquote>
+<p>kill pid 1331</p>
+</blockquote>
 
       
 
@@ -227,17 +216,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">经验</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -288,7 +266,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/03/14/在Mac下搭建一个自己的hexo博客/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/03/15/Mac-下查看和杀掉进程/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -302,18 +280,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/03/15/Mac-下查看和杀掉进程/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Mac 下查看和杀掉进程
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/03/14/我的第一篇博客文章/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">我的第一篇博客文章</div>
+    <a href="/2019/03/14/在Mac下搭建一个自己的hexo博客/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">在Mac下搭建一个自己的hexo博客</div>
       <i class="icon-circle-right"></i>
     </a>
   
