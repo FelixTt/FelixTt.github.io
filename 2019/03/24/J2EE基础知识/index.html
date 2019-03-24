@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>J2EE基础知识 | 邰涛的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Servlet总结 阐述Servlet和CGI的区别? CGI的不足之处: Servlet的优点：   Servlet接口中有哪些方法及Servlet生命周期探秘 get和post请求的区别 什么情况下调用doGet()和doPost() 转发（Forward）和重定向（Redirect）的区别 自动刷新(Refresh) Servlet与线程安全 JSP和Servlet是什么关系 JSP工作">
+  <meta name="description" content="Servlet总结 阐述Servlet和CGI的区别? CGI的不足之处: Servlet的优点：   Servlet接口中有哪些方法及Servlet生命周期探秘 get和post请求的区别 什么情况下调用doGet()和doPost() 转发（Forward）和重定向（Redirect）的区别 自动刷新(Refresh) Servlet与线程安全">
 <meta name="keywords" content="java面试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="J2EE基础知识">
 <meta property="og:url" content="http://yoursite.com/2019/03/24/J2EE基础知识/index.html">
 <meta property="og:site_name" content="邰涛的博客">
-<meta property="og:description" content="Servlet总结 阐述Servlet和CGI的区别? CGI的不足之处: Servlet的优点：   Servlet接口中有哪些方法及Servlet生命周期探秘 get和post请求的区别 什么情况下调用doGet()和doPost() 转发（Forward）和重定向（Redirect）的区别 自动刷新(Refresh) Servlet与线程安全 JSP和Servlet是什么关系 JSP工作">
+<meta property="og:description" content="Servlet总结 阐述Servlet和CGI的区别? CGI的不足之处: Servlet的优点：   Servlet接口中有哪些方法及Servlet生命周期探秘 get和post请求的区别 什么情况下调用doGet()和doPost() 转发（Forward）和重定向（Redirect）的区别 自动刷新(Refresh) Servlet与线程安全">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/3/31/1627bee073079a28?w=675&h=292&f=jpeg&s=133553">
-<meta property="og:updated_time" content="2019-03-24T06:07:37.817Z">
+<meta property="og:updated_time" content="2019-03-24T09:07:19.688Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="J2EE基础知识">
-<meta name="twitter:description" content="Servlet总结 阐述Servlet和CGI的区别? CGI的不足之处: Servlet的优点：   Servlet接口中有哪些方法及Servlet生命周期探秘 get和post请求的区别 什么情况下调用doGet()和doPost() 转发（Forward）和重定向（Redirect）的区别 自动刷新(Refresh) Servlet与线程安全 JSP和Servlet是什么关系 JSP工作">
+<meta name="twitter:description" content="Servlet总结 阐述Servlet和CGI的区别? CGI的不足之处: Servlet的优点：   Servlet接口中有哪些方法及Servlet生命周期探秘 get和post请求的区别 什么情况下调用doGet()和doPost() 转发（Forward）和重定向（Redirect）的区别 自动刷新(Refresh) Servlet与线程安全">
 <meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/3/31/1627bee073079a28?w=675&h=292&f=jpeg&s=133553">
   
     <link rel="alternative" href="/atom.xml" title="邰涛的博客" type="application/atom+xml">
@@ -199,6 +199,9 @@
 <li><a href="#转发forward和重定向redirect的区别">转发（Forward）和重定向（Redirect）的区别</a></li>
 <li><a href="#自动刷新refresh">自动刷新(Refresh)</a></li>
 <li><a href="#servlet与线程安全">Servlet与线程安全</a></li>
+</ul>
+<a id="more"></a>
+<ul>
 <li><a href="#jsp和servlet是什么关系">JSP和Servlet是什么关系</a></li>
 <li><a href="#jsp工作原理">JSP工作原理</a></li>
 <li><a href="#jsp有哪些内置对象、作用分别是什么">JSP有哪些内置对象、作用分别是什么</a></li>
@@ -211,7 +214,6 @@
 <li><a href="#实现会话跟踪的技术有哪些">实现会话跟踪的技术有哪些</a></li>
 <li><a href="#cookie和session的的区别">Cookie和Session的的区别</a></li>
 </ul>
-<a id="more"></a>
 <!-- /MarkdownTOC -->
 <h2 id="Servlet总结"><a href="#Servlet总结" class="headerlink" title="Servlet总结"></a>Servlet总结</h2><p>在Java Web程序中，<strong>Servlet</strong>主要负责接收用户请求<strong>HttpServletRequest</strong>,在<strong>doGet()</strong>,<strong>doPost()</strong>中做相应的处理，并将回应<strong>HttpServletResponse</strong>反馈给用户。Servlet可以设置初始化参数，供Servlet内部使用。一个Servlet类只会有一个实例，在它初始化时调用<strong>init()方法</strong>，销毁时调用<strong>destroy()方法</strong>。<strong>Servlet需要在web.xml中配置</strong>（MyEclipse中创建Servlet会自动配置），<strong>一个Servlet可以设置多个URL访问</strong>。<strong>Servlet不是线程安全</strong>，因此要谨慎使用类变量。</p>
 <h2 id="阐述Servlet和CGI的区别"><a href="#阐述Servlet和CGI的区别" class="headerlink" title="阐述Servlet和CGI的区别?"></a>阐述Servlet和CGI的区别?</h2><h3 id="CGI的不足之处"><a href="#CGI的不足之处" class="headerlink" title="CGI的不足之处:"></a>CGI的不足之处:</h3><p>1，需要为每个请求启动一个操作CGI程序的系统进程。如果请求频繁，这将会带来很大的开销。</p>
