@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>JVM垃圾回收 | 邰涛的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="上文回顾：《可能是把Java内存区域讲的最清楚的一篇文章》 写在前面本节常见面试题：问题答案在文中都有提到  如何判断对象是否死亡（两种方法）。 简单的介绍一下强引用、软引用、弱引用、虚引用（虚引用与软引用和弱引用的区别、使用软引用能带来的好处）。 如何判断一个常量是废弃常量 如何判断一个类是无用的类 垃圾收集有哪些算法，各自的特点？ HotSpot为什么要分为新生代和老年代？ 常见的垃圾回收器有">
+  <meta name="description" content="写在前面本节常见面试题：问题答案在文中都有提到  如何判断对象是否死亡（两种方法）。 简单的介绍一下强引用、软引用、弱引用、虚引用（虚引用与软引用和弱引用的区别、使用软引用能带来的好处）。 如何判断一个常量是废弃常量 如何判断一个类是无用的类 垃圾收集有哪些算法，各自的特点？ HotSpot为什么要分为新生代和老年代？ 常见的垃圾回收器有那些？ 介绍一下CMS,G1收集器。 Minor Gc和Fu">
 <meta name="keywords" content="java面试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM垃圾回收">
 <meta property="og:url" content="http://yoursite.com/2019/03/24/JVM垃圾回收/index.html">
 <meta property="og:site_name" content="邰涛的博客">
-<meta property="og:description" content="上文回顾：《可能是把Java内存区域讲的最清楚的一篇文章》 写在前面本节常见面试题：问题答案在文中都有提到  如何判断对象是否死亡（两种方法）。 简单的介绍一下强引用、软引用、弱引用、虚引用（虚引用与软引用和弱引用的区别、使用软引用能带来的好处）。 如何判断一个常量是废弃常量 如何判断一个类是无用的类 垃圾收集有哪些算法，各自的特点？ HotSpot为什么要分为新生代和老年代？ 常见的垃圾回收器有">
+<meta property="og:description" content="写在前面本节常见面试题：问题答案在文中都有提到  如何判断对象是否死亡（两种方法）。 简单的介绍一下强引用、软引用、弱引用、虚引用（虚引用与软引用和弱引用的区别、使用软引用能带来的好处）。 如何判断一个常量是废弃常量 如何判断一个类是无用的类 垃圾收集有哪些算法，各自的特点？ HotSpot为什么要分为新生代和老年代？ 常见的垃圾回收器有那些？ 介绍一下CMS,G1收集器。 Minor Gc和Fu">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-8-26/29176325.jpg">
 <meta property="og:image" content="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-3堆结构.png">
@@ -34,10 +34,10 @@
 <meta property="og:image" content="http://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-8-27/22018368.jpg">
 <meta property="og:image" content="http://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-8-27/22018368.jpg">
 <meta property="og:image" content="http://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-8-27/82825079.jpg">
-<meta property="og:updated_time" content="2019-03-24T14:51:49.209Z">
+<meta property="og:updated_time" content="2019-03-24T14:55:59.052Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM垃圾回收">
-<meta name="twitter:description" content="上文回顾：《可能是把Java内存区域讲的最清楚的一篇文章》 写在前面本节常见面试题：问题答案在文中都有提到  如何判断对象是否死亡（两种方法）。 简单的介绍一下强引用、软引用、弱引用、虚引用（虚引用与软引用和弱引用的区别、使用软引用能带来的好处）。 如何判断一个常量是废弃常量 如何判断一个类是无用的类 垃圾收集有哪些算法，各自的特点？ HotSpot为什么要分为新生代和老年代？ 常见的垃圾回收器有">
+<meta name="twitter:description" content="写在前面本节常见面试题：问题答案在文中都有提到  如何判断对象是否死亡（两种方法）。 简单的介绍一下强引用、软引用、弱引用、虚引用（虚引用与软引用和弱引用的区别、使用软引用能带来的好处）。 如何判断一个常量是废弃常量 如何判断一个类是无用的类 垃圾收集有哪些算法，各自的特点？ HotSpot为什么要分为新生代和老年代？ 常见的垃圾回收器有那些？ 介绍一下CMS,G1收集器。 Minor Gc和Fu">
 <meta name="twitter:image" content="http://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-8-26/29176325.jpg">
   
     <link rel="alternative" href="/atom.xml" title="邰涛的博客" type="application/atom+xml">
@@ -202,8 +202,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>上文回顾：<a href="https://mp.weixin.qq.com/s?__biz=MzU4NDQ4MzU5OA==&amp;mid=2247484303&amp;idx=1&amp;sn=af0fd436cef755463f59ee4dd0720cbd&amp;chksm=fd9855eecaefdcf8d94ac581cfda4e16c8a730bda60c3b50bc55c124b92f23b6217f7f8e58d5&amp;token=506869459&amp;lang=zh_CN#rd" target="_blank" rel="noopener">《可能是把Java内存区域讲的最清楚的一篇文章》</a></p>
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><h3 id="本节常见面试题："><a href="#本节常见面试题：" class="headerlink" title="本节常见面试题："></a>本节常见面试题：</h3><p>问题答案在文中都有提到</p>
+        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><h3 id="本节常见面试题："><a href="#本节常见面试题：" class="headerlink" title="本节常见面试题："></a>本节常见面试题：</h3><p>问题答案在文中都有提到</p>
 <ul>
 <li>如何判断对象是否死亡（两种方法）。</li>
 <li>简单的介绍一下强引用、软引用、弱引用、虚引用（虚引用与软引用和弱引用的区别、使用软引用能带来的好处）。</li>
@@ -469,6 +468,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2019/03/24/把Java内存区域讲的最清楚的一篇文章/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          把Java内存区域讲的最清楚的一篇文章
+        
+      </div>
+    </a>
+  
   
     <a href="/2019/03/24/ArrayList-Grow/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">ArrayList-Grow</div>
@@ -607,11 +615,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">记录</a>
+                <a href="javascript:void(0)" class="js-tag color3">经验</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">经验</a>
+                <a href="javascript:void(0)" class="js-tag color3">记录</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -160,6 +160,90 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-把Java内存区域讲的最清楚的一篇文章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/24/把Java内存区域讲的最清楚的一篇文章/">把Java内存区域讲的最清楚的一篇文章</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/24/把Java内存区域讲的最清楚的一篇文章/" class="archive-article-date">
+  	<time datetime="2019-03-24T14:57:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="写在前面-常见面试题"><a href="#写在前面-常见面试题" class="headerlink" title="写在前面(常见面试题)"></a>写在前面(常见面试题)</h2><h3 id="基本问题"><a href="#基本问题" class="headerlink" title="基本问题"></a>基本问题</h3><ul>
+<li><strong>介绍下 Java 内存区域（运行时数据区）</strong></li>
+<li><strong>Java 对象的创建过程（五步，建议能默写出来并且要知道每一步虚拟机做了什么）</strong></li>
+<li><strong>对象的访问定位的两种方式（句柄和直接指针两种方式）</strong></li>
+</ul>
+<h3 id="拓展问题"><a href="#拓展问题" class="headerlink" title="拓展问题"></a>拓展问题</h3><ul>
+<li><strong>String类和常量池</strong></li>
+<li><strong>8种基本类型的包装类和常量池</strong></li>
+</ul>
+        
+          <a class="article-more-a" href="/2019/03/24/把Java内存区域讲的最清楚的一篇文章/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">java面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/24/把Java内存区域讲的最清楚的一篇文章/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-JVM垃圾回收" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -180,8 +264,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>上文回顾：<a href="https://mp.weixin.qq.com/s?__biz=MzU4NDQ4MzU5OA==&amp;mid=2247484303&amp;idx=1&amp;sn=af0fd436cef755463f59ee4dd0720cbd&amp;chksm=fd9855eecaefdcf8d94ac581cfda4e16c8a730bda60c3b50bc55c124b92f23b6217f7f8e58d5&amp;token=506869459&amp;lang=zh_CN#rd" target="_blank" rel="noopener">《可能是把Java内存区域讲的最清楚的一篇文章》</a></p>
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><h3 id="本节常见面试题："><a href="#本节常见面试题：" class="headerlink" title="本节常见面试题："></a>本节常见面试题：</h3><p>问题答案在文中都有提到</p>
+        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><h3 id="本节常见面试题："><a href="#本节常见面试题：" class="headerlink" title="本节常见面试题："></a>本节常见面试题：</h3><p>问题答案在文中都有提到</p>
 <ul>
 <li>如何判断对象是否死亡（两种方法）。</li>
 <li>简单的介绍一下强引用、软引用、弱引用、虚引用（虚引用与软引用和弱引用的区别、使用软引用能带来的好处）。</li>
@@ -942,84 +1025,6 @@
 
 
   
-    <article id="post-在Mac下搭建一个自己的hexo博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/14/在Mac下搭建一个自己的hexo博客/">在Mac下搭建一个自己的hexo博客</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/14/在Mac下搭建一个自己的hexo博客/" class="archive-article-date">
-  	<time datetime="2019-03-14T08:14:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p>##准备<br>在命令行下  sudo su</p>
-<p>hexo是需要node.js支持</p>
-        
-          <a class="article-more-a" href="/2019/03/14/在Mac下搭建一个自己的hexo博客/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">经验</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/14/在Mac下搭建一个自己的hexo博客/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1117,11 +1122,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">记录</a>
+                <a href="javascript:void(0)" class="js-tag color3">经验</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">经验</a>
+                <a href="javascript:void(0)" class="js-tag color3">记录</a>
               </li>
              
               <li class="article-tag-list-item">
