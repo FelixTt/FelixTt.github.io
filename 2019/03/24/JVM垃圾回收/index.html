@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-8-27/22018368.jpg">
 <meta property="og:image" content="http://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-8-27/22018368.jpg">
 <meta property="og:image" content="http://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-8-27/82825079.jpg">
-<meta property="og:updated_time" content="2019-03-24T14:49:44.537Z">
+<meta property="og:updated_time" content="2019-03-24T14:51:49.209Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM垃圾回收">
 <meta name="twitter:description" content="上文回顾：《可能是把Java内存区域讲的最清楚的一篇文章》 写在前面本节常见面试题：问题答案在文中都有提到  如何判断对象是否死亡（两种方法）。 简单的介绍一下强引用、软引用、弱引用、虚引用（虚引用与软引用和弱引用的区别、使用软引用能带来的好处）。 如何判断一个常量是废弃常量 如何判断一个类是无用的类 垃圾收集有哪些算法，各自的特点？ HotSpot为什么要分为新生代和老年代？ 常见的垃圾回收器有">
@@ -215,6 +215,7 @@
 <li>介绍一下CMS,G1收集器。</li>
 <li>Minor Gc和Full GC 有什么不同呢？</li>
 </ul>
+<a id="more"></a>
 <h3 id="本文导火索"><a href="#本文导火索" class="headerlink" title="本文导火索"></a>本文导火索</h3><p><img src="http://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-8-26/29176325.jpg" alt></p>
 <p>当需要排查各种 内存溢出问题、当垃圾收集成为系统达到更高并发的瓶颈时，我们就需要对这些“自动化”的技术实施必要的监控和调节。</p>
 <h2 id="1-揭开JVM内存分配与回收的神秘面纱"><a href="#1-揭开JVM内存分配与回收的神秘面纱" class="headerlink" title="1  揭开JVM内存分配与回收的神秘面纱"></a>1  揭开JVM内存分配与回收的神秘面纱</h2><p>Java 的自动内存管理主要是针对对象内存的回收和对象内存的分配。同时，Java 自动内存管理最核心的功能是 <strong>堆</strong> 内存中对象的分配与回收。</p>
@@ -606,11 +607,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">经验</a>
+                <a href="javascript:void(0)" class="js-tag color3">记录</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">记录</a>
+                <a href="javascript:void(0)" class="js-tag color3">经验</a>
               </li>
              
               <li class="article-tag-list-item">
