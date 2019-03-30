@@ -160,6 +160,268 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-SpringMvc工作原理详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/29/SpringMvc工作原理详解/">SpringMvc工作原理详解</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/29/SpringMvc工作原理详解/" class="archive-article-date">
+  	<time datetime="2019-03-29T15:21:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>本文整理自网络，原文出处暂不知，对原文做了较大的改动，在此说明！</p>
+</blockquote>
+<h3 id="先来看一下什么是-MVC-模式"><a href="#先来看一下什么是-MVC-模式" class="headerlink" title="先来看一下什么是 MVC 模式"></a>先来看一下什么是 MVC 模式</h3><p>MVC 是一种设计模式.</p>
+<p><strong>MVC 的原理图如下：</strong></p>
+<p><img src="http://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-10-11/60679444.jpg" alt></p>
+<h3 id="SpringMVC-简单介绍"><a href="#SpringMVC-简单介绍" class="headerlink" title="SpringMVC 简单介绍"></a>SpringMVC 简单介绍</h3><p>SpringMVC 框架是以请求为驱动，围绕 Servlet 设计，将请求发给控制器，然后通过模型对象，分派器来展示请求结果视图。其中核心类是 DispatcherServlet，它是一个 Servlet，顶层是实现的Servlet接口。</p>
+        
+          <a class="article-more-a" href="/2019/03/29/SpringMvc工作原理详解/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/29/SpringMvc工作原理详解/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-SpringBean" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/28/SpringBean/">SpringBean</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/28/SpringBean/" class="archive-article-date">
+  	<time datetime="2019-03-28T14:58:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- MarkdownTOC -->
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#一-bean的作用域">一  bean的作用域</a><ul>
+<li><a href="#1-singleton——唯一-bean-实例">1. singleton——唯一 bean 实例</a></li>
+<li><a href="#2-prototype——每次请求都会创建一个新的-bean-实例">2. prototype——每次请求都会创建一个新的 bean 实例</a></li>
+<li><a href="#3-request——每一次http请求都会产生一个新的bean，该bean仅在当前http-request内有效">3. request——每一次HTTP请求都会产生一个新的bean，该bean仅在当前HTTP request内有效</a></li>
+<li><a href="#4-session——每一次http请求都会产生一个新的-bean，该bean仅在当前-http-session-内有效">4. session——每一次HTTP请求都会产生一个新的 bean，该bean仅在当前 HTTP session 内有效</a></li>
+<li><a href="#5-globalsession">5. globalSession</a></li>
+</ul>
+</li>
+<li><a href="#二-bean的生命周期">二  bean的生命周期</a><ul>
+<li><a href="#initialization-和-destroy">initialization 和 destroy</a></li>
+<li><a href="#实现aware接口-在bean中使用spring框架的一些对象">实现*Aware接口 在Bean中使用Spring框架的一些对象</a></li>
+<li><a href="#beanpostprocessor">BeanPostProcessor</a></li>
+<li><a href="#总结">总结</a></li>
+<li><a href="#单例管理的对象">单例管理的对象</a></li>
+<li><a href="#非单例管理的对象">非单例管理的对象</a></li>
+</ul>
+</li>
+<li><a href="#三-说明">三 说明</a></li>
+</ul>
+        
+          <a class="article-more-a" href="/2019/03/28/SpringBean/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/28/SpringBean/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Spring学习与面试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/28/Spring学习与面试/">Spring学习与面试</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/28/Spring学习与面试/" class="archive-article-date">
+  	<time datetime="2019-03-28T14:56:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Spring相关教程-资料："><a href="#Spring相关教程-资料：" class="headerlink" title="Spring相关教程/资料："></a>Spring相关教程/资料：</h1><blockquote>
+<h2 id="官网相关"><a href="#官网相关" class="headerlink" title="官网相关"></a>官网相关</h2></blockquote>
+<p> <a href="https://spring.io/" target="_blank" rel="noopener">Spring官网</a></p>
+<p><a href="https://spring.io/projects" target="_blank" rel="noopener">Spring系列主要项目</a></p>
+<p>从配置到安全性，Web应用到大数据 - 无论您的应用程序的基础架构需求如何，都有一个Spring Project来帮助您构建它。 从小处着手，根据需要使用 - Spring是通过设计模块化的。</p>
+<p> <a href="https://spring.io/guides" target="_blank" rel="noopener">Spring官网指南</a></p>
+<p>无论您在构建什么，这些指南都旨在尽可能快地提高您的工作效率 - 使用Spring团队推荐的最新Spring项目发布和技术。</p>
+<p> <a href="https://blog.csdn.net/tangtong1/article/details/51326887" target="_blank" rel="noopener">Spring官方文档翻译（1~6章）</a></p>
+        
+          <a class="article-more-a" href="/2019/03/28/Spring学习与面试/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/28/Spring学习与面试/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-一千行MySQL命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -767,278 +1029,6 @@
 
 
   
-    <article id="post-Java集合框架面试题几乎必问" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/24/Java集合框架面试题几乎必问/">Java集合框架面试题几乎必问</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/24/Java集合框架面试题几乎必问/" class="archive-article-date">
-  	<time datetime="2019-03-24T09:08:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- MarkdownTOC -->
-<ul>
-<li><a href="#arraylist-与-linkedlist-异同">Arraylist 与 LinkedList 异同</a><ul>
-<li><a href="#补充：数据结构基础之双向链表">补充：数据结构基础之双向链表</a></li>
-</ul>
-</li>
-<li><a href="#arraylist-与-vector-区别">ArrayList 与 Vector 区别</a></li>
-<li><a href="#hashmap的底层实现">HashMap的底层实现</a><ul>
-<li><a href="#jdk18之前">JDK1.8之前</a></li>
-<li><a href="#jdk18之后">JDK1.8之后</a></li>
-</ul>
-</li>
-<li><a href="#hashmap-和-hashtable-的区别">HashMap 和 Hashtable 的区别</a></li>
-<li><a href="#hashmap-的长度为什么是2的幂次方">HashMap 的长度为什么是2的幂次方</a></li>
-</ul>
-        
-          <a class="article-more-a" href="/2019/03/24/Java集合框架面试题几乎必问/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">java面试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/24/Java集合框架面试题几乎必问/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java基础知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/24/Java基础知识/">Java基础知识</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/24/Java基础知识/" class="archive-article-date">
-  	<time datetime="2019-03-24T06:13:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- MarkdownTOC -->
-<ul>
-<li><a href="#1-面向对象和面向过程的区别">1. 面向对象和面向过程的区别</a><ul>
-<li><a href="#面向过程">面向过程</a></li>
-<li><a href="#面向对象">面向对象</a></li>
-</ul>
-</li>
-<li><a href="#2-java-语言有哪些特点">2. Java 语言有哪些特点</a></li>
-<li><a href="#3-关于-jvm-jdk-和-jre-最详细通俗的解答">3. 关于 JVM JDK 和 JRE 最详细通俗的解答</a><ul>
-<li><a href="#jvm">JVM</a></li>
-<li><a href="#jdk-和-jre">JDK 和 JRE</a></li>
-</ul>
-</li>
-<li><a href="#4-oracle-jdk-和-openjdk-的对比">4. Oracle JDK 和 OpenJDK 的对比</a></li>
-<li><a href="#5-java和c的区别">5. Java和C++的区别</a></li>
-<li><a href>6. 什么是 Java 程序的主类 应用程序和小程序的主类有何不同</a></li>
-</ul>
-        
-          <a class="article-more-a" href="/2019/03/24/Java基础知识/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">java面试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/24/Java基础知识/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-J2EE基础知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/24/J2EE基础知识/">J2EE基础知识</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/24/J2EE基础知识/" class="archive-article-date">
-  	<time datetime="2019-03-24T05:49:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- MarkdownTOC -->
-<ul>
-<li><a href="#servlet总结">Servlet总结</a></li>
-<li><a href="#阐述servlet和cgi的区别">阐述Servlet和CGI的区别?</a><ul>
-<li><a href="#cgi的不足之处">CGI的不足之处:</a></li>
-<li><a href="#servlet的优点">Servlet的优点：</a></li>
-</ul>
-</li>
-<li><a href="#servlet接口中有哪些方法及servlet生命周期探秘">Servlet接口中有哪些方法及Servlet生命周期探秘</a></li>
-<li><a href="#get和post请求的区别">get和post请求的区别</a></li>
-<li><a href="#什么情况下调用doget和dopost">什么情况下调用doGet()和doPost()</a></li>
-<li><a href="#转发forward和重定向redirect的区别">转发（Forward）和重定向（Redirect）的区别</a></li>
-<li><a href="#自动刷新refresh">自动刷新(Refresh)</a></li>
-<li><a href="#servlet与线程安全">Servlet与线程安全</a></li>
-</ul>
-        
-          <a class="article-more-a" href="/2019/03/24/J2EE基础知识/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">java面试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/24/J2EE基础知识/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1130,6 +1120,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Mac</a>
